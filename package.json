@@ -10,9 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.2",
     "crypto": "0.0.3",
-    "express": "^4.15.3",
+    "express": "^4.15.4",
     "querystring": "^0.2.0",
-    "superagent": "^3.5.2"
+    "superagent": "^3.5.2",
+    "swig": "^1.4.2"
   }
 }
