@@ -57,19 +57,30 @@ cet4check.prototype.getCard = function (userid) {
                 reject(response.text)
             }
             var $ = cheerio.load(response.text);
-            var name = $("td").text().match(/考生姓名(.*?)身份证号/)[1];
-            name = name.slice(0,3)
-            var cet4Card = $("td").text().match(/准考证号(\d+)/)[1]
-            if (cet4Card.length == 15) {
-                var info = {
-                    zkzh: cet4Card,
-                    xm: name
+            try {
+                var name = $("td").text().match(/考生姓名(.*?)身份证号/)[1];
+                if( !$("td").text().match(/考生姓名(.*?)身份证号/)){
+                    reject( $("td").text().match(/考生姓名(.*?)身份证号/))
                 }
-                resolve(info);
+                name = name.slice(0,3)
+                var cet4Card = $("td").text().match(/准考证号(\d+)/)[1]
+                if (cet4Card.length == 15) {
+                    var info = {
+                        zkzh: cet4Card,
+                        xm: name
+                    }
+                    resolve(info);
+                }
+                else {
+                    reject(err)
+                }
             }
-            else {
-                reject(err)
-            }
+            catch(err){
+                resolve(err) // 可执行
+
+                            }
+
+
         });
     });
 }
