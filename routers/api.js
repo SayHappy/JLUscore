@@ -169,9 +169,5 @@ jlucheck.prototype.getInfo = function (user, psw) {
 
 
 var cet = new cet4check()
-// cet.getInfo("130502199710061538").then((info)=>{
-//         console.log(info)
-//
-// })
 
 module.exports = router;
